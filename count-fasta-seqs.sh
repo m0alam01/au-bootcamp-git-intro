@@ -1,13 +1,22 @@
-#!/bin/sh
+ #!/bin/sh
 
 # How this script should behave:
 #
 # INPUT:   Paths to one or more fasta sequence files
-#
+#filepath=/home/aubcls93/au-bootcamp-git-intro
 # OUTPUT:  For each file, it should write a line with the number of sequences
 #          in the file, a space, and then the file NAME (NOT the path!), and a
 #          final line with the total number of sequences across all files.
-#
+sum=0
+for filepath in "$@";
+    do
+   # count=`grep ">" $filepath|wc|awk '{print $1}'`
+    count=`grep -c ">" $filepath`
+    echo  $count $basename $filepath
+    sum=`expr $sum + $count`
+done;
+ echo $sum
+ #count +=count
 # EXAMPLE: In the same directory as this script, you should find an example
 #          fasta file named 'example-seqs1.fasta', which contains:
 #
@@ -63,7 +72,7 @@
 # files that were 'given to' this script. The variable "$@" will be very useful
 # for this. Let's take a look at what it gives us:
 
-echo "$@"
+#echo "$@"
 
 # How are you going to work with each file path?
 # HINT: for loop (remember "for do done"?)
