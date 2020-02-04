@@ -63,7 +63,7 @@
 # files that were 'given to' this script. The variable "$@" will be very useful
 # for this. Let's take a look at what it gives us:
 
-echo "$@"
+#echo "$@"
 
 # How are you going to work with each file path?
 # HINT: for loop (remember "for do done"?)
@@ -94,11 +94,22 @@ echo "$@"
 #
 # ADD YOUR CODE BELOW:
 
-for filepath in $@
-do
-base_file_name=`/usr/bin/basename $filepath .fasta`
-x=`/usr/bin/grep ">" $filepath | /usr/bin/wc -l`
-echo $x $base_file_name
+#for filepath in $@
+#do
+#base_file_name=`/usr/bin/basename $filepath .fasta`
+#x=`/usr/bin/grep ">" $filepath | /usr/bin/wc -l`
+#echo $x $base_file_name
 #/usr/bin/expr $x
-done
-exit
+#done
+#exit
+filepath=~/
+sum=0
+for filepath in "$@";
+    do
+   # count=`grep ">" $filepath|wc|awk '{print $1}'`
+    count=`grep -c ">" $filepath`
+   basename=`/usr/bin/basename $filepath .fasta`
+echo  $count $basename "$@"
+    sum=` expr $sum + $count`
+done;
+ echo $sum
