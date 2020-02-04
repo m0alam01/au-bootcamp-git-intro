@@ -3,7 +3,7 @@
 # How this script should behave:
 #
 # INPUT:   Paths to one or more fasta sequence files
-filepath=~//home/aubcls93/au-bootcamp-git-intro
+#filepath=/home/aubcls93/au-bootcamp-git-intro
 # OUTPUT:  For each file, it should write a line with the number of sequences
 #          in the file, a space, and then the file NAME (NOT the path!), and a
 #          final line with the total number of sequences across all files.
@@ -12,8 +12,8 @@ for filepath in "$@";
     do
    # count=`grep ">" $filepath|wc|awk '{print $1}'`
     count=`grep -c ">" $filepath`
-   echo  $count $basename "$@"
-    sum=` expr $sum + $count`
+    echo  $count $basename $filepath
+    sum=`expr $sum + $count`
 done;
  echo $sum
  #count +=count
