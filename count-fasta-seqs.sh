@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 # How this script should behave:
 #
@@ -8,14 +8,15 @@
 #          in the file, a space, and then the file NAME (NOT the path!), and a
 #          final line with the total number of sequences across all files.
 sum=0
-for filepath in "$@";
-    do
-   # count=`grep ">" $filepath|wc|awk '{print $1}'`
-    count=`grep -c ">" $filepath`
-    echo  $count $basename $filepath
-    sum=`expr $sum + $count`
-done;
- echo $sum
+for name in "$@"
+do
+filen=`basename $name`
+a=`grep ">" $name | wc -l`
+b=`echo $filen`
+sum=`expr $sum + $a`
+echo $a $b
+done
+echo $sum
  #count +=count
 # EXAMPLE: In the same directory as this script, you should find an example
 #          fasta file named 'example-seqs1.fasta', which contains:
@@ -103,4 +104,3 @@ done;
 #
 # ADD YOUR CODE BELOW:
 
-#Another line
